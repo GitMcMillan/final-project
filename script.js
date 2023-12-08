@@ -17,43 +17,37 @@ let globalData;
 
 function renderCenter(selectedCharacter) {
   // characterList.innerHTML = ""
-  const img = document.createElement("img")
-  img.src = selectedCharacter.imageUrl
-
+  const centerImg = document.createElement("img")
+  centerImg.src = selectedCharacter.imageUrl
   characterName.textContent = selectedCharacter.fullName
   title.textContent = selectedCharacter.title
   familyName.textContent = selectedCharacter.family
   // li.append(img)
   // characterList.innerHTML = ""
-  characterList.append(img)
+  characterList.append(centerImg)
 
   //render other images of same house members
   //search through json based on selected character family
+  const sameFamily = globalData.filter((character) => character.family ===
+    selectedCharacter.family)
+  sameFamily.forEach((familyMember) => {
+    renderSides(familyMember)
+  })
 
-  // const sameFamily = globalData.filter((character) => character.family === selectedCharacter.family)
-
-  // sameFamily.forEach((character) => {
-  //   renderSides(character)
-  // })
-
-  // const otherFamily = data.find((otherFamily) => {
-  //   if (otherFamily.family === data.family) {
-  //     renderSides(otherFamily)
-  //   }
-  // })
 
 }
 
 function renderSides(data) {
-  const img = document.createElement("img")
-  img.src = data.imageUrl
-  characterList.append(img)
+  const sideImg = document.createElement("img")
+  sideImg.src = data.imageUrl
+  sideImg.classList.add("side-image")
+  characterList.append(sideImg)
 
 }
 
 fetch(url)
   .then((resp) => resp.json())
-  .then((globalData) => {
+  .then((data) => {
     // console.log(data);
     globalData = data
     //Fill on Load
@@ -89,12 +83,12 @@ fetch(url)
         // newImg.src = selectedCharacter.imageUrl
       }
 
-      // const otherFamily = 
-      globalData.find((otherFamily) => {
-        if (otherFamily.family === globalData.family) {
-          renderSides(otherFamily)
-        }
-      })
+      const otherFamily =
+        globalData.find((otherFamily) => {
+          if (otherFamily.family === globalData.family) {
+            renderSides(otherFamily)
+          }
+        })
 
       // renderCenter()
 

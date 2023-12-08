@@ -1,14 +1,14 @@
 body {
-  background-color: black; 
+  background-color: black;
   color: white;
   text-align: center;
-  
+
 }
 
 #character-list {
-  
+
   margin: 0 auto;
-  
+
 }
 
 .logo {
@@ -24,7 +24,7 @@ body {
   height: auto
 }
 
-#name  {
+#name {
   font-family: "Arial, Helvetica, sans-serif"
 }
 
@@ -40,3 +40,7 @@ body {
   margin-left: 1000px
 }
 
+.side-image {
+  width: 1px;
+  margin: 10px
+}
