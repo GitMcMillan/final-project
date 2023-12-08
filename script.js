@@ -13,32 +13,28 @@ const characterDropdown = document.querySelector("#character-dropdown");
 
 //Functions
 
-let data;
-function renderCenter(data) {
+let globalData;
+
+function renderCenter(selectedCharacter) {
   // characterList.innerHTML = ""
   const img = document.createElement("img")
-  img.src = data.imageUrl
+  img.src = selectedCharacter.imageUrl
 
-  characterName.textContent = data.fullName
-  title.textContent = data.title
-  familyName.textContent = data.family
+  characterName.textContent = selectedCharacter.fullName
+  title.textContent = selectedCharacter.title
+  familyName.textContent = selectedCharacter.family
   // li.append(img)
   // characterList.innerHTML = ""
   characterList.append(img)
 
   //render other images of same house members
   //search through json based on selected character family
-  /*  const selectedCharacter = data.find(
-         (character) => character.fullName === selectedName
-       )
- 
-       if (selectedCharacter) {
-         // characterList.innerHTML = ""
-         const newImg = document.querySelector("#character-list > img")
-         newImg.remove()
-         renderCenter(selectedCharacter)
-         // newImg.src = selectedCharacter.imageUrl
-       }*/
+
+  // const sameFamily = globalData.filter((character) => character.family === selectedCharacter.family)
+
+  // sameFamily.forEach((character) => {
+  //   renderSides(character)
+  // })
 
   // const otherFamily = data.find((otherFamily) => {
   //   if (otherFamily.family === data.family) {
@@ -48,7 +44,7 @@ function renderCenter(data) {
 
 }
 
-function renderSides() {
+function renderSides(data) {
   const img = document.createElement("img")
   img.src = data.imageUrl
   characterList.append(img)
@@ -57,16 +53,16 @@ function renderSides() {
 
 fetch(url)
   .then((resp) => resp.json())
-  .then((data) => {
+  .then((globalData) => {
     // console.log(data);
 
     //Fill on Load
-    renderCenter(data[0])
+    renderCenter(globalData[0])
 
 
 
     // Fill Dropwdown Menu
-    data.forEach((character) => {
+    globalData.forEach((character) => {
       const option = document.createElement("option")
       option.value = character.fullName
       option.textContent = character.fullName
@@ -81,7 +77,7 @@ fetch(url)
       // console.log(selectedName);
 
       //find the selected character
-      const selectedCharacter = data.find(
+      const selectedCharacter = globalData.find(
         (character) => character.fullName === selectedName
       )
 
@@ -94,8 +90,8 @@ fetch(url)
       }
 
       // const otherFamily = 
-      data.find((otherFamily) => {
-        if (otherFamily.family === data.family) {
+      globalData.find((otherFamily) => {
+        if (otherFamily.family === globalData.family) {
           renderSides(otherFamily)
         }
       })
