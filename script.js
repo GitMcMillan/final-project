@@ -40,11 +40,11 @@ function renderCenter(data) {
          // newImg.src = selectedCharacter.imageUrl
        }*/
 
-  const otherFamily = data.find((otherFamily) => {
-    if (otherFamily.family === data.family) {
-      renderSides(otherFamily)
-    }
-  })
+  // const otherFamily = data.find((otherFamily) => {
+  //   if (otherFamily.family === data.family) {
+  //     renderSides(otherFamily)
+  //   }
+  // })
 
 }
 
@@ -92,6 +92,13 @@ fetch(url)
         renderCenter(selectedCharacter)
         // newImg.src = selectedCharacter.imageUrl
       }
+
+      // const otherFamily = 
+      data.find((otherFamily) => {
+        if (otherFamily.family === data.family) {
+          renderSides(otherFamily)
+        }
+      })
 
       // renderCenter()
 
