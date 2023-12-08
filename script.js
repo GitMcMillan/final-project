@@ -55,7 +55,7 @@ fetch(url)
   .then((resp) => resp.json())
   .then((globalData) => {
     // console.log(data);
-
+    globalData = data
     //Fill on Load
     renderCenter(globalData[0])
 
