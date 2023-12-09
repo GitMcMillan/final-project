@@ -18,6 +18,9 @@ let globalData;
 
 function renderCenter(selectedCharacter) {
   imageContainer.innerHTML = ""
+  document.querySelectorAll("#character-list img").forEach((img) => img.remove());
+
+
   const centerImg = document.createElement("img")
   centerImg.src = selectedCharacter.imageUrl
   characterName.textContent = selectedCharacter.fullName
@@ -80,6 +83,7 @@ fetch(url)
         // characterList.innerHTML = ""
         const newImg = document.querySelector("#character-list > img")
         newImg.remove()
+        // characterList.innerHTML = ""
         renderCenter(selectedCharacter)
         // newImg.src = selectedCharacter.imageUrl
       }
