@@ -9,7 +9,6 @@ const title = document.querySelector("#title")
 
 //dropdown
 const characterDropdown = document.querySelector("#character-dropdown");
-
 const imageContainer = document.querySelector("#image-container")
 
 //Functions
@@ -33,19 +32,20 @@ function renderCenter(selectedCharacter) {
   const sameFamily = globalData.filter((character) => character.family ===
     selectedCharacter.family && character != selectedCharacter)
   sameFamily.forEach((familyMember) => {
-    renderSides(familyMember)
+    renderBottom(familyMember)
   })
 
 
 }
 
-function renderSides(data) {
+function renderBottom(data) {
 
-  const sideImg = document.createElement("img")
-  sideImg.remove()
-  sideImg.src = data.imageUrl
-  sideImg.classList.add("side-image")
-  characterList.append(sideImg)
+  const bottomImg = document.createElement("img")
+  // bottomImg.remove()
+
+  bottomImg.src = data.imageUrl
+  bottomImg.classList.add("bottom-image")
+  characterList.append(bottomImg)
 
 }
 
@@ -70,9 +70,8 @@ fetch(url)
     // Target Name In Dropdown
     characterDropdown.addEventListener("change", (e) => {
       e.preventDefault()
-      // characterList.innerHTML = ""
       const selectedName = e.target.value
-      // console.log(selectedName);
+
 
       //find the selected character
       const selectedCharacter = globalData.find(
@@ -88,10 +87,12 @@ fetch(url)
         // newImg.src = selectedCharacter.imageUrl
       }
 
+      // find other family and display them
       const otherFamily =
         globalData.find((otherFamily) => {
           if (otherFamily.family === globalData.family) {
-            renderSides(otherFamily)
+            renderBottom(otherFamily)
+
           }
         })
     })
