@@ -10,24 +10,25 @@ const title = document.querySelector("#title")
 //dropdown
 const characterDropdown = document.querySelector("#character-dropdown");
 
+const imageContainer = document.querySelector("#image-container")
 
 //Functions
 
 let globalData;
 
 function renderCenter(selectedCharacter) {
-  characterList.innerHTML = ""
+  imageContainer.innerHTML = ""
   const centerImg = document.createElement("img")
   centerImg.src = selectedCharacter.imageUrl
   characterName.textContent = selectedCharacter.fullName
   title.textContent = selectedCharacter.title
   familyName.textContent = selectedCharacter.family
-  characterList.append(centerImg)
+  imageContainer.appendChild(centerImg)
 
   //render other images of same house members
   //search through json based on selected character family
   const sameFamily = globalData.filter((character) => character.family ===
-    selectedCharacter.family)
+    selectedCharacter.family && character != selectedCharacter)
   sameFamily.forEach((familyMember) => {
     renderSides(familyMember)
   })
