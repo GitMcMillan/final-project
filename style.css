@@ -21,7 +21,8 @@ body {
 
 #character-list img {
   width: 300px;
-  height: auto
+  height: auto;
+  margin: 7px;
 }
 
 #name {
@@ -41,6 +42,7 @@ body {
 }
 
 .side-image {
-  width: 1px;
-  margin: 10px
+  width: 150px;
+  height: auto;
+  margin: 7px;
 }

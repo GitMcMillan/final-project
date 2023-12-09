@@ -16,14 +16,12 @@ const characterDropdown = document.querySelector("#character-dropdown");
 let globalData;
 
 function renderCenter(selectedCharacter) {
-  // characterList.innerHTML = ""
+  characterList.innerHTML = ""
   const centerImg = document.createElement("img")
   centerImg.src = selectedCharacter.imageUrl
   characterName.textContent = selectedCharacter.fullName
   title.textContent = selectedCharacter.title
   familyName.textContent = selectedCharacter.family
-  // li.append(img)
-  // characterList.innerHTML = ""
   characterList.append(centerImg)
 
   //render other images of same house members
@@ -38,7 +36,9 @@ function renderCenter(selectedCharacter) {
 }
 
 function renderSides(data) {
+
   const sideImg = document.createElement("img")
+  sideImg.remove()
   sideImg.src = data.imageUrl
   sideImg.classList.add("side-image")
   characterList.append(sideImg)
@@ -89,10 +89,6 @@ fetch(url)
             renderSides(otherFamily)
           }
         })
-
-      // renderCenter()
-
     })
-
   })
 
