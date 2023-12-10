@@ -41,7 +41,13 @@ function renderCenter(selectedCharacter) {
 function renderBottom(data) {
 
   const bottomImg = document.createElement("img")
+  bottomImg.addEventListener("click", (e) => {
+    renderCenter(data)
+
+
+  })
   // bottomImg.remove()
+
 
   bottomImg.src = data.imageUrl
   bottomImg.classList.add("bottom-image")
@@ -81,20 +87,22 @@ fetch(url)
       if (selectedCharacter) {
         // characterList.innerHTML = ""
         const newImg = document.querySelector("#character-list > img")
-        newImg.remove()
+        // newImg.remove()
         // characterList.innerHTML = ""
         renderCenter(selectedCharacter)
         // newImg.src = selectedCharacter.imageUrl
       }
 
       // find other family and display them
-      const otherFamily =
-        globalData.find((otherFamily) => {
-          if (otherFamily.family === globalData.family) {
-            renderBottom(otherFamily)
 
-          }
-        })
+      // I think this is redundant
+      // const otherFamily =
+      //   globalData.find((otherFamily) => {
+      //     if (otherFamily.family === globalData.family) {
+      //       renderBottom(otherFamily)
+
+      //     }
+      //   })
     })
   })
 
