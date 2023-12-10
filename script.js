@@ -5,6 +5,7 @@ const characterList = document.querySelector("#character-list")
 const characterName = document.querySelector("#name")
 const familyName = document.querySelector("#family")
 const title = document.querySelector("#title")
+const logo = document.querySelector("#logo")
 
 
 //dropdown
@@ -26,6 +27,12 @@ function renderCenter(selectedCharacter) {
   title.textContent = selectedCharacter.title
   familyName.textContent = selectedCharacter.family
   imageContainer.appendChild(centerImg)
+
+  //render the banner
+
+  logo.src = "assets/" + selectedCharacter.lastName + "Banner.webp"
+
+
 
   //render other images of same house members
   //search through json based on selected character family
@@ -78,47 +85,7 @@ function renderBottom(data) {
 }
 
 
-// function renderBottom(data) {
-//   const bottomImgContainer = document.createElement("div")
-//   const bottomImg = document.createElement("img")
-//   //create the floating text div
-//   const floatingText = document.createElement("div")
 
-
-//   bottomImgContainer.addEventListener("click", (e) => {
-//     renderCenter(data)
-//   })
-
-//   bottomImgContainer.addEventListener("mouseover", (e) => {
-
-//     e.target.textContent = data.fullName
-//     console.log(e.target.textContent)
-
-//     //give the floatingtext its text content
-//     floatingText.textContent = data.fullName
-//     floatingText.style.visibility = "visible"
-
-//   })
-
-//   // bottomImgContainer.add("mouseout", (e) => {
-//   //   floatingText.style.visibility = "hidden"
-//   // })
-
-//   bottomImg.src = data.imageUrl
-//   bottomImg.classList.add("bottom-image")
-
-
-//   bottomImgContainer.style.position = "relative"
-//   bottomImgContainer.style.display = "inline-block"
-
-//   //give the floatingtext a class and hide it
-//   floatingText.classList.add("floating-text")
-//   floatingText.style.visibility = "hidden"
-
-
-//   characterList.append(bottomImgContainer)
-
-// }
 
 fetch(url)
   .then((resp) => resp.json())
@@ -150,24 +117,9 @@ fetch(url)
       )
 
       if (selectedCharacter) {
-        // characterList.innerHTML = ""
         const newImg = document.querySelector("#character-list > img")
-        // newImg.remove()
-        // characterList.innerHTML = ""
         renderCenter(selectedCharacter)
-        // newImg.src = selectedCharacter.imageUrl
       }
-
-      // find other family and display them
-
-      // I think this is redundant
-      // const otherFamily =
-      //   globalData.find((otherFamily) => {
-      //     if (otherFamily.family === globalData.family) {
-      //       renderBottom(otherFamily)
-
-      //     }
-      //   })
     })
   })
 
