@@ -41,17 +41,31 @@ function renderCenter(selectedCharacter) {
 function renderBottom(data) {
 
   const bottomImg = document.createElement("img")
+  //create the floating text div
+  const floatingText = document.createElement("div")
   bottomImg.addEventListener("click", (e) => {
     renderCenter(data)
+  })
 
+  bottomImg.addEventListener("mouseover", (e) => {
+
+    e.target.textContent = data.fullName
+    console.log(e.target.textContent)
+
+    //give the floatingtext its text content
+    floatingText.textContent = data.fullName
+    floatingText.style.visibility = "visible"
 
   })
-  // bottomImg.remove()
-
-
   bottomImg.src = data.imageUrl
   bottomImg.classList.add("bottom-image")
-  characterList.append(bottomImg)
+
+  //give the floatingtext a class and hide it
+  floatingText.classList.add("floating-text")
+  floatingText.style.visibility = "hidden"
+
+
+  characterList.append(bottomImg, floatingText)
 
 }
 
