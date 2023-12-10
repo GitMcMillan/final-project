@@ -38,36 +38,86 @@ function renderCenter(selectedCharacter) {
 
 }
 
-function renderBottom(data) {
 
+
+function renderBottom(data) {
+  //create bottomimg container
+  const bottomImgContainer = document.createElement("div")
   const bottomImg = document.createElement("img")
   //create the floating text div
   const floatingText = document.createElement("div")
-  bottomImg.addEventListener("click", (e) => {
+
+  bottomImgContainer.addEventListener("click", (e) => {
     renderCenter(data)
-  })
+  });
 
-  bottomImg.addEventListener("mouseover", (e) => {
-
-    e.target.textContent = data.fullName
-    console.log(e.target.textContent)
-
-    //give the floatingtext its text content
+  bottomImgContainer.addEventListener("mouseover", (e) => {
     floatingText.textContent = data.fullName
     floatingText.style.visibility = "visible"
-
   })
+
+  bottomImgContainer.addEventListener("mouseout", (e) => {
+    floatingText.style.visibility = "hidden"
+  })
+
   bottomImg.src = data.imageUrl
   bottomImg.classList.add("bottom-image")
+
+
+  bottomImgContainer.style.position = "relative"
+  bottomImgContainer.style.display = "inline-block"
 
   //give the floatingtext a class and hide it
   floatingText.classList.add("floating-text")
   floatingText.style.visibility = "hidden"
 
-
-  characterList.append(bottomImg, floatingText)
-
+  bottomImgContainer.appendChild(bottomImg)
+  bottomImgContainer.appendChild(floatingText)
+  characterList.appendChild(bottomImgContainer)
 }
+
+
+// function renderBottom(data) {
+//   const bottomImgContainer = document.createElement("div")
+//   const bottomImg = document.createElement("img")
+//   //create the floating text div
+//   const floatingText = document.createElement("div")
+
+
+//   bottomImgContainer.addEventListener("click", (e) => {
+//     renderCenter(data)
+//   })
+
+//   bottomImgContainer.addEventListener("mouseover", (e) => {
+
+//     e.target.textContent = data.fullName
+//     console.log(e.target.textContent)
+
+//     //give the floatingtext its text content
+//     floatingText.textContent = data.fullName
+//     floatingText.style.visibility = "visible"
+
+//   })
+
+//   // bottomImgContainer.add("mouseout", (e) => {
+//   //   floatingText.style.visibility = "hidden"
+//   // })
+
+//   bottomImg.src = data.imageUrl
+//   bottomImg.classList.add("bottom-image")
+
+
+//   bottomImgContainer.style.position = "relative"
+//   bottomImgContainer.style.display = "inline-block"
+
+//   //give the floatingtext a class and hide it
+//   floatingText.classList.add("floating-text")
+//   floatingText.style.visibility = "hidden"
+
+
+//   characterList.append(bottomImgContainer)
+
+// }
 
 fetch(url)
   .then((resp) => resp.json())
