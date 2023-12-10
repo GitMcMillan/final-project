@@ -57,6 +57,7 @@ function renderBottom(data) {
   })
 
   bottomImgContainer.addEventListener("mouseout", (e) => {
+    floatingText.textContent = ""
     floatingText.style.visibility = "hidden"
   })
 
