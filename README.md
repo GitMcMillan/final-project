@@ -1,5 +1,5 @@
 
-                                                                        GAME OF THRONES CHARACTER DETAILS GENERATOR
+                                                      GAME OF THRONES CHARACTER DETAILS GENERATOR
 
 
 Welcome to my Game of Thrones character selection app. 
