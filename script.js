@@ -30,8 +30,7 @@ function renderCenter(selectedCharacter) {
 
   //render the banner
 
-  logo.src = "assets/" + selectedCharacter.lastName + "Banner.webp"
-
+  logo.src = "assets/" + selectedCharacter.lastName + "Banner.webp" || "assets/" + selectedCharacter.firstName + "Banner.webp"
 
 
   //render other images of same house members
