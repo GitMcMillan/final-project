@@ -41,8 +41,6 @@ function renderCenter(selectedCharacter) {
   sameFamily.forEach((familyMember) => {
     renderBottom(familyMember)
   })
-
-
 }
 
 
@@ -117,7 +115,6 @@ fetch(url)
       )
 
       if (selectedCharacter) {
-        const newImg = document.querySelector("#character-list > img")
         renderCenter(selectedCharacter)
       }
     })
