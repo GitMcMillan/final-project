@@ -6,6 +6,7 @@ const characterName = document.querySelector("#name")
 const familyName = document.querySelector("#family")
 const title = document.querySelector("#title")
 const logo = document.querySelector("#logo")
+// const AllBottomImages = document.querySelectorAll("#character-list img")
 
 
 //dropdown
